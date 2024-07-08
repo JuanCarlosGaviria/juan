@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Http",
+    "\\app\\Models",
+    "\\app\\Providers",
+    "\\app\\View",
+    "\\app\\View\\Components",
+    "\\database",
+    "\\database\\migrations",
+    "\\routes"
+  ],
+  "SelectedNode": "\\database\\migrations\\2024_06_24_022658_create_people_table.php",
+  "PreviewInSolutionExplorer": false
+}
