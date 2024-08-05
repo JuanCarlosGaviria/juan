@@ -1,5 +1,5 @@
 @extends('dashboard.master')
-@section('titulo','NuevoIngreso')
+@section('titulo','EditarIngreso')
 @include('layouts/navigation')
 @section('contenido')
 <div class="container py-4">
@@ -11,8 +11,10 @@
         <label for="provider_id" class="col-sm-2 col-form-label">Id_proveedor</label>
         <div class="col-sm-10">
             <select name="provider_id" id="provider_id" class="form-select" required >
-                <option value="1"></option>
-                
+                <option value="">Seleccionar_Proveedor</option>
+                @foreach($person as $person)
+                <option value="{{$person->id}}">{{$person->type}}</option>
+                @endforeach
             </select>
         </div>
     </div>

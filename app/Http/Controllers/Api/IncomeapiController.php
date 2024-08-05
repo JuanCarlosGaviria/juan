@@ -1,32 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\income;
-use App\Models\person;
-use App\Models\User;
-class IncomeController extends Controller
+
+class IncomeapiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $income=Income::all();
-        return view('dashboard.income.index',['income'=>$income]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $person=Person::all();
-        $User=User::all();
-        
-        return view('dashboard.income.create',['User'=>$User],['person'=>$person]);
+        $incomes=Income::all();
+        return$incomes;
     }
 
     /**
@@ -45,7 +33,7 @@ class IncomeController extends Controller
         $income->total=$request->input('total');
         $income->status=$request->input('status');
         $income->save();
-        return view("dashboard.income.message",['msg'=>"El ingreso ha sido agregado con Exito"]);
+        return $income;
     }
 
     /**
@@ -53,18 +41,8 @@ class IncomeController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $income=Income::find($id);
-        $person=Person::all();
-        $User=User::all();
-        return view('dashboard.income.edit',['income'=>$income],['User'=>$User],['person'=>$person]);
+        $income=Income::findOrFail($id);
+        return response ()->json($income);
     }
 
     /**
@@ -83,7 +61,7 @@ class IncomeController extends Controller
         $income->total=$request->input('total');
         $income->status=$request->input('status');
         $income->save();
-        return view("dashboard.income.message",['msg'=>"El ingreso ha sido Actualizado con Exito"]);
+        return $income;
     }
 
     /**
@@ -91,8 +69,8 @@ class IncomeController extends Controller
      */
     public function destroy(string $id)
     {
-            $income=Income::find($id);
-            $income->delete();
-            return redirect("dashboard/income");
+        $income=Income::find($id);
+        $income->delete();
+        return('Ingreso eliminado');
     }
 }

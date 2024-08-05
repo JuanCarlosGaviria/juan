@@ -1,5 +1,5 @@
 @extends('dashboard.master')
-@section('titulo','NuevaPersona')
+@section('titulo','Persona')
 @include('layouts/navigation')
 @section('contenido')
 <div class="container py-4">
@@ -26,7 +26,7 @@
         <label for="type">tipo</label>
         <div class="col-sm-10">
             <select class="form-control" name="type" id="type">
-                <option value="1" {{ $person->type == 1 ? 'selected' : '' }}>Personanatural</option>
+                <option value="1" {{ $person->type == 1 ? 'selected' : '' }}>Persona Natural</option>
                 <option value="2" {{ $person->type == 2 ? 'selected' : '' }}>empresa</option>
                 <option value="3" {{ $person->type == 3 ? 'selected' : '' }}>provedor</option>
             </select>
